@@ -1,0 +1,97 @@
+body {
+    background-image: url("background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.fc-toolbar {
+    background-color: white;
+    padding: 10px;
+}
+
+.fc-toolbar h2 {
+    font-weight: bold;
+}
+
+.fc-today-button {
+    background-color: yellow;
+    color: black;
+    border-color: black;
+}
+
+.fc-today-button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.fc-prev-button {
+    background-color: yellow;
+    color: black;
+    border-color: black;
+}
+
+.fc-prev-button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.fc-next-button {
+    background-color: yellow;
+    color: black;
+    border-color: black;
+}
+
+.fc-next-button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.fc-day-header {
+    background-color: yellow;
+}
+
+.fc-event-container {
+    border-color: black;
+}
+
+.fc-day-grid-event {
+    border-color: black;
+}
+
+.fc-content {
+    background-color: yellow;
+    color: black;
+    border-color: black;
+}
+
+/* .fc-content:hover {
+    background-color: black;
+    border-color: white;
+} */
+
+/* time of every event */
+.fc-time {
+    color: black;
+}
+
+.fc-time:hover {
+    color: white;
+}
+
+/* title of every event */
+.fc-title {
+    color: black;
+}
+
+.fc-title:hover {
+    color: white;
+}
+
+/* calender squares (days) */
+.fc-day { 
+    /* background-color: rgb(192, 192, 192); */
+}

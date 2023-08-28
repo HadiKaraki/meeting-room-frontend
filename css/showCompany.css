@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    background-image: url("meeting_chairs.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 30px !important;
+}
+
+.square-container {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+    grid-gap: 20px;
+    background-color: white;
+    border: 0.4px solid black;
+}
+
+.left-child {
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.left-child #image {
+    background-color: white;
+    flex: 1;
+    width: 100%;
+    /* Can be in percentage also. */
+    height: 35%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    object-fit: cover;
+}
+
+.left-child #image img {
+    display: flex;
+    height: 310px;
+    width: 100%;
+}
+
+.left-child #rating-panel {
+    background-color: white;
+    display: flex;
+    height: 202px;
+    width: 100%;
+}
+
+.left-child #edit-company {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.right-child {
+    flex: 1;
+    margin-top: 30px;
+    margin-right: 20px;
+    max-height: 590px;
+}
+
+.right-child #top-panel {
+    border-bottom: 0.4px solid black;
+    width: 100%;
+    padding: 10px;
+}
+
+.right-child #middle-panel {
+    padding: 10px;
+    margin-top: 24px;
+}
+
+.right-child #bottom-panel {
+    padding: 10px;
+    border-top: 0.4px solid black;
+}
+
+.right-child #property {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.right-child #brand img {
+    width: 100px;
+    height: 100px;
+    margin-left: 150px;
+}
+
+@media (max-width: 768px) {
+    .square-container,
+    #image {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        grid-template-columns: 0;
+        grid-gap: 0;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .right-child {
+        margin-right: 20px;
+        margin-left: 20px;
+        width: 90%;
+        margin-top: 20px;
+        max-height: 100%;
+        overflow-y: hidden;
+    }
+    .left-child {
+        width: 95%;
+        margin: 0;
+    }
+    .left-child #top-panel h1 {
+        display: inline;
+    }
+}

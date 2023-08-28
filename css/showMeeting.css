@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-image: url("meeting_room.jpg");
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 30px !important;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.square-container {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: white;
+    border: 0.4px solid black;
+}
+
+.info {
+    flex: 1;
+    margin-right: 20px;
+    max-height: 590px;
+}
+
+.info #top-panel {
+    border-bottom: 0.4px solid black;
+    width: 100%;
+    padding: 10px;
+}
+
+.info #middle-panel {
+    padding: 10px;
+}
+
+.info #bottom-panel {
+    padding: 10px;
+    border-top: 0.4px solid black;
+}
+
+.info #property {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#top-section {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin: 0 auto;
+    background-color: white;
+    border: 0.65px solid;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
+
+#bottom-section {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border: 0.65px solid black;
+    border-top: 0;
+}
+
+@media (max-width: 768px) {
+    .square-container {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
