@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../icomoon/style.css">
+    <link href='../../packages/core/main.css' rel='stylesheet' />
+    <link href='../../packages/daygrid/main.css' rel='stylesheet' />
+    <script src="../../jquery-3.3.1.min.js"></script>
+    <script src="../../popper.min.js"></script>
+    <script src="../../bootstrap.min.js"></script>
+    <script src='../../packages/core/main.js'></script>
+    <script src='../../packages/interaction/main.js'></script>
+    <script src='../../packages/daygrid/main.js'></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../roomCalender.css">
+    <title>Home</title>
+</head>
+
+<div class="content">
+    <div id='calendar'></div>
+</div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid' ],
+      defaultDate: '<%= formattedDate %>',
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        // {
+        //   groupId: 999,
+        //   title: 'Event',
+        //   start: '2020-02-12T10:30:00',
+        //   end: '2020-02-12T16:30:00'
+        // },
+        <% for(let meeting of meetings) { %>
+        {
+          //groupId: 999,
+          title: '<%= meeting.title %>',
+          url: 'http://localhost:3000/meeting/<%= meeting.id %>',
+          start: '<%= meeting.dateOfStart %><%= meeting.startTime %>',
+          end: '<%= meeting.dateOfEnd %><%= meeting.endTime %>'
+        },
+        <% } %>
+      ]
+    });
+
+    calendar.render();
+  });
+
+    </script>
+
+    <script src="../../main.js"></script>

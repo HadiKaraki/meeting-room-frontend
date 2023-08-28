@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../showRoom.css">
+    <title>Room</title>
+</head>
+
+<section class="square-container">
+    <div class="info">
+        <div id="top-panel">
+            <h1 style="color: blue;">
+                <%= room.name %>
+            </h1>
+        </div>
+        <div id="middle-panel">
+            <div id="description">
+                <h3>
+                    <%= room.description %>
+                </h3>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">ID:</p></strong>
+                <p style="display: inline; color: blue; font-size: 20px;"><%= room.id %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Company ID:</p></strong>
+                <p style="display: inline; color: blue; font-size: 20px;"><%= room.relatedCompany %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Location:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= room.location %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Capacity:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= room.capacity %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Scheduled meeting:</p></strong>
+                <p style="display: inline; font-size: 20px;">no</p>
+            </div>
+        </div>
+        <div id="bottom-panel">
+            <a href="/room/<%= room.id %>/add-meeting" style="margin-right: 10px;">Schedule a meeting</a>
+            <% if(userRoles.includes('company_admin') || userRoles.includes('admin')) { %>
+            <a id="edit-product" href="/room/<%= room.id %>/edit" style="margin-right: 10px;">Edit</a>
+            <% } %>
+            <a id="edit-product" href="/room/<%= room.id %>/calender" style="margin-right: 10px;">Meetings calender</a>
+            <a id="edit-product" href="/room/<%= room.id %>/delete" style="color: red;">Delete</a>
+        </div>
+    </div>
+</section>

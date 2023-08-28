@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../showMeeting.css">
+    <title>Meeting</title>
+</head>
+
+<section class="square-container">
+    <div class="info">
+        <div id="top-panel">
+            <h1 style="color: blue;">
+                <%= meeting.title %>
+            </h1>
+        </div>
+        <div id="middle-panel">
+            <div id="description">
+                <h3>
+                    User ID: <%= meeting.userId %>
+                </h3>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">ID:</p></strong>
+                <p style="display: inline; color: blue; font-size: 20px;"><%= meeting.id %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Start date:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= meeting.dateOfStart %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">End date:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= meeting.dateOfEnd %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Start time:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= meeting.startTime %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">End time:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= meeting.endTime %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Number of attendees:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= meeting.nbOfAttendees %></p>
+            </div>
+        </div>
+        <div id="bottom-panel">
+            <a id="edit-meeting" href="/meeting/<%= meeting.id %>/edit" style="margin-right: 10px;">Edit</a>
+            <a id="edit-product" href="/meeting/<%= meeting.id %>/delete" style="color: red;">Delete</a>
+        </div>
+    </div>
+</section>

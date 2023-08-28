@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../showCompany.css">
+    <title>All companies</title>
+</head>
+
+<section class="square-container">
+    <div class="left-child">
+        <div id="image">
+            <img id="company-logo">
+        </div>
+        <div id="rating-panel"></div>
+        <% if(userRoles.includes('company_admin') || userRoles.includes('admin')) { %>
+        <div id="edit-company">
+            <a href="/company/<%= company.id %>/edit" style="margin-right: 10px;">Edit</a>
+            <% if(company.active) { %>
+            <a href="/company/<%= company.id %>/deactivate" id="deactivate-company-button">deactivate</a>
+            <% } else { %>
+            <a href="/company/<%= company.id %>/activate" id="deactivate-company-button">activate</a>
+            <% } %>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="right-child">
+        <div id="top-panel">
+            <h1 style="color: blue;">
+                <%= company.name %>
+            </h1>
+        </div>
+        <div id="middle-panel">
+            <div id="description">
+                <h3>
+                    <%= company.description %>
+                </h3>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">ID:</p></strong>
+                <p style="display: inline; color: blue; font-size: 20px;"><%= company.id %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Email:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= company.email %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Active:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= company.active %></p>
+            </div>
+            <div id="property">
+                <strong><p style="margin-right: 80px; display: inline;">Number of rooms:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= company.rooms.$values.length %></p>
+            </div>
+        </div>
+        <div id="bottom-panel">
+            <a href="/company/<%= company.id %>/all-rooms" style="margin-right: 10px;">View all rooms</a>
+            <a href="/company/<%= company.id %>/all-users" style="margin-right: 10px;">View all users</a>
+            <% if(userRoles.includes('company_admin') || userRoles.includes('admin')) { %>
+            <a href="/company/<%= company.id %>/add-room">Add a room</a>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('#company-logo').attr('src', 'data:image/png;base64,<%= company.logo %>');
+</script>

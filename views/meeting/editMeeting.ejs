@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../addMeeting.css">
+    <title>Schedule meeting</title>
+</head>
+<form method="POST" action="/meeting/<%= meeting.id %>/edit" id="editmeeting-form">
+  <section class="h-100 h-custom gradient-custom-2">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-8">
+          <div class="card card-registration shadow card-registration-2" style="border-radius: 15px;">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-12">
+                  <div class="p-5">
+                    <h3 class="fw-bold mb-5" style="color: black; text-decoration: underline;">Edit meeting <%= meeting.id %></h3>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="title" name="title" value="<%= meeting.title %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="nb-of-attendees">Title</label>
+                          <h5 id="titleCheck" style="color: red;">**Title is missing</h5>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="nb-of-attendees" name="nbOfAttendees" value="<%= meeting.nbOfAttendees %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="nb-of-attendees">Nb of attendees</label>
+                          <small id="capacityvalid" class="form-text text-muted invalid-feedback">Number of attendees must be an integer</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="date-of-meeting" name="dateOfStart" value="<%= meeting.dateOfStart %>" placeholder="yyyy-mm-dd" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="date-of-meeting">Date of start</label>
+                          <small id="idvalid" class="form-text text-muted invalid-feedback">Date format is wrong</small>
+                        </div>
+                      </div>
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="date-of-meeting" name="dateOfEnd" value="<%= meeting.dateOfEnd %>" placeholder="yyyy-mm-dd" class="form-control form-control-lg" required/>
+                            <label class="form-label" for="date-of-meeting">Date of end</label>
+                            <small id="idvalid" class="form-text text-muted invalid-feedback">Date format is wrong</small>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="start-time" name="startTime" value="<%= (meeting.startTime).substring(1) %>" placeholder="HH:MM:SS" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="start-time">Start time</label>
+                          <small id="idvalid" class="form-text text-muted invalid-feedback">Time format is wrong</small>
+                          <small id="startTimeSubValid" class="form-text text-muted invalid-feedback">Start time is larger than end time</small>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="end-time" name="endTime" value="<%= (meeting.endTime).substring(1) %>" placeholder="HH:MM:SS" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="end-time">End time</label>
+                          <small id="idvalid" class="form-text text-muted invalid-feedback">Time format is wrong</small>
+                          <small id="endTimeSubValid" class="form-text text-muted invalid-feedback">End time is smaller than start time</small>
+                        </div>
+                      </div>
+                    </div>
+                      <button type="submit" id="submitBtn" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Submit</button>
+                  </div>
+                </div>
+            </section>
+      </form>
+      <!-- <script src="../../meetingValidator.js"></script> -->

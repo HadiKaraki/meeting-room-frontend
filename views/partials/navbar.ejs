@@ -1,0 +1,54 @@
+<head>
+  <link rel="stylesheet" href="../../navbar.css">
+</head>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: yellow !important;">Meetings.com</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% if(token && !userRoles.includes('admin')){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/company/<%= currentUser.companyId %>">My company</a>
+          </li>
+          <% } %>
+          <% if(token && userRoles.includes('admin')) { %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Options
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/company/all">All companies</a></li>
+            <li><a class="dropdown-item" href="/company/add">Add company</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/user/all">All users</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/role/all">All roles</a></li>
+            <li><a class="dropdown-item" href="/role/add">Add role</a></li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+      <% if(token && userRoles.includes('admin')) { %>
+      <form class="form-inline my-2 my-lg-0" action="/company/search" method="POST" style="margin-right: 10px;">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search company" name="id" aria-label="Search">
+        <button class="btn btn-outline-warning my-2 my-sm-0" style="border-color: yellow !important; color: yellow !important" type="submit">Search</button>
+      </form>
+      <% } %>
+      <div class="d-flex" role="search">
+          <% if(!token) { %>
+          <a class="nav-link" href="/user/login">Login</a>
+          <% } else {%>
+          <a class="nav-link" href="/user/account"><i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;"></i> My account</a>
+          <a class="nav-link" href="/user/logout">Logout</a>
+          <% } %>
+          <% if(token && userRoles.includes('admin')) { %>
+            <a class="nav-link" href="/user/add-user">Add user</a>
+          <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

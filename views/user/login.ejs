@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../login.css">
+    <title>Login</title>
+</head>
+<form action="/user/login" method="POST" id="login-form">
+    <div class="container d-flex justify-content-center align-items-center mt-5" style="margin-bottom: 40px;">
+        <div class="row">
+            <div class="col-md-3 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow custom-card-width">
+                    <img src="../meeting.png" class="card-img-top"/>
+                    <div class="card-body" style="margin-top: 15px;">
+                        <h5 class="card-title" style="text-decoration: underline;">Login</h5>
+                        <a href="/signup" stlye="display: inline; float: right;">Signup</a>
+                            <div class="mb-3">
+                                <label class="form-label" for="username" style="margin-top: 10px;">Username</label>
+                                <input class="form-control" type="text" id="username" name="userName" autofocus required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <h6 id="usercheck" style="color: red; margin-top: 5px;">**Username is missing</h6>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password" autofocus required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <h6 id="passcheck" style="color: red; margin-top: 5px;">**Password is missing</h6>
+                            </div>
+                            <input type="text" id="token" name="token" style="display: none;"></input>
+                        <button type="button" id="submitButton" class="btn btn-dark btn-block">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="../loginValidator.js"></script>

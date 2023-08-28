@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../editRoom.css">
+    <title>Create room</title>
+</head>
+<form method="POST" action="/room/<%= room.id %>/edit" id="editroom-form">
+  <section class="h-100 h-custom gradient-custom-2">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-8">
+          <div class="card card-registration shadow card-registration-2" style="border-radius: 15px;">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-12">
+                  <div class="p-5">
+                    <h3 class="fw-bold mb-5" style="color: black; text-decoration: underline;">Edit room <%= room.id %></h3>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="name" name="name" value="<%= room.name %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="name">Name</label>
+                          <h5 id="nameCheck" style="color: red;">**Name is missing</h5>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="description" name="description" value="<%= room.description %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="description">Description</label>
+                          <h5 id="descriptionCheck" style="color: red;">**Description is missing</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="location" name="location" value="<%= room.location %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="location">Location</label>
+                          <h5 id="locationCheck" style="color: red;">**Location is missing</h5>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="capacity" name="capacity" value="<%= room.capacity %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="capacity">Capacity</label>
+                          <small id="capacityvalid" class="form-text text-muted invalid-feedback">Capacity must be an integer</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <input type="text" id="id" name="id" value="<%= room.id %>" class="form-control form-control-lg" required/>
+                          <label class="form-label" for="id">ID</label>
+                          <small id="idvalid" class="form-text text-muted invalid-feedback">Your ID must be a valid ID (integer)</small>
+                        </div>
+                      </div>
+                    </div>
+                      <button type="submit" id="submitBtn" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Submit</button>
+                  </div>
+                </div>
+            </section>
+      </form>
+      <script src="../../editRoomValidator.js"></script>

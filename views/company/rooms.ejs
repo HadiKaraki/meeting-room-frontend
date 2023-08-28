@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewh1ort" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../rooms.css">
+    <title>Document</title>
+</head>
+
+<section id="container">
+    <% for (let room of rooms) { %>
+    <a href="/room/<%= room.id %>">
+        <div id="category">
+            <div id="left-child">
+                <h1><%= room.name %></h1>
+            </div>
+            <div id="right-child" style="margin-top: 17%;">
+                <div id="room-id" style="margin-bottom: 10px;">
+                    <p style="margin-right: 25px; display: inline; text-decoration: underline;">ID:</p>
+                    <p style="display: inline; color: black;"><%= room.id %></p>
+                </div>
+                <div id="room-meeting">
+                    <p style="margin-right: 25px; display: inline; text-decoration: underline;">Capacity:</p>
+                    <p style="display: inline; color: red;"><%= room.capacity %></p>
+                </div>
+            </div>
+        </div>
+    </a>
+    <% } %>
+</section>
+<style>
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+  </style>

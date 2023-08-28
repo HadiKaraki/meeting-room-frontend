@@ -1,0 +1,117 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../addUser.css">
+    <title>Signup</title>
+</head>
+    <form action="/user/add-user" method="POST" id="signup-form">
+        <section class="h-100 h-custom gradient-custom-2">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-8">
+                  <div class="card card-registration shadow card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                      <div class="row g-0">
+                        <div class="col-lg-12">
+                          <div class="p-5">
+                            <h3 class="fw-bold mb-5" style="color: black; text-decoration: underline;">User infomation</h3>
+                            <div class="row">
+                              <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-outline">
+                                  <input type="text" id="first-name" name="firstName" class="form-control form-control-lg" required/>
+                                  <label class="form-label" for="first-name">First name</label>
+                                  <h5 id="firstNameCheck" style="color: red;">**First name is missing</h5>
+                                </div>
+                              </div>
+                              <div class="col-md-6 mb-4 pb-2">
+                                <div class="form-outline">
+                                  <input type="text" id="last-name" name="lastName" class="form-control form-control-lg" required/>
+                                  <label class="form-label" for="last-name">Last name</label>
+                                  <h5 id="lastNameCheck" style="color: red;">**Last name is missing</h5>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mb-4 pb-2">
+                              <label class="form-label" for="company-id" id="company-id-label" name="companyId">Company ID</label>
+                              <select class="select" id="company-id" name="companyId" required>
+                                <option selected value="0">0</option>
+                                <% for(let company of companies.$values) { %>
+                                <option value="<%= company.id %>"><%= company.id %></option>
+                                <% } %>
+                              </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                    <input type="text" id="username" name="userName" class="form-control form-control-lg" required/>
+                                    <label class="form-label" for="username">Username</label>
+                                    <small id="uservalid" class="form-text text-muted invalid-feedback">Your username must be a valid username</small>
+                                    <h5 id="usercheck" style="color: red;">**Username is missing</h5>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                    <input type="text" id="password" name="password" class="form-control form-control-lg" required/>
+                                    <label class="form-label" for="password">Password</label>
+                                    <h5 id="passcheck" style="color: red;">**Password is missing</h5>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                    <input type="text" id="age" name="age" class="form-control form-control-lg" required/>
+                                    <label class="form-label" for="age">Age</label>
+                                    <h5 id="ageCheck" style="color: red;">**Age is missing</h5>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                    <input type="text" id="email" name="email" class="form-control form-control-lg" required/>
+                                    <label class="form-label" for="email">Email</label>
+                                    <small id="emailvalid" class="form-text text-muted invalid-feedback">Your email must be a valid email</small>
+                                    <h5 id="emailCheck" style="color: red;">**Email is missing</h5>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                  <div class="form-outline">
+                                    <input type="text" id="phone-nb" name="phoneNumber" class="form-control form-control-lg" required/>
+                                    <label class="form-label" for="phone-nb">Phone number</label>
+                                    <h5 id="phoneNumberCheck" style="color: red;">**Phone number is missing</h5>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                  <label class="form-label" for="role" name="role">Role</label>
+                                  <select class="select" id="role" name="role" required>
+                                    <% for(let role of roles) { %>
+                                    <option selected value="<%= role.name %>"><%= role.name %></option>
+                                    <% } %>
+                                  </select>
+                                </div>
+                              </div>
+                              <button type="button" id="submitbtn" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Register</button>
+                          </div>
+                        </div>
+                    </section>
+                </form>
+                <script>
+                  const roleSelect = document.getElementById('role');
+                  const companySelect = document.getElementById('company-id');
+                  const companyLabel = document.getElementById('company-id-label');
+
+                  roleSelect.addEventListener('change', function () {
+                      const selectedRole = roleSelect.value;
+                      if (selectedRole === 'admin') {
+                          companyLabel.style.display = 'none';
+                          companySelect.style.display = 'none';
+                          //companySelect.value = null;
+                      } else {
+                          companyLabel.style.display = 'block';
+                          companySelect.style.display = 'block';
+                      }
+                  });
+                </script>
+                <script src="../signupValidator.js"></script>

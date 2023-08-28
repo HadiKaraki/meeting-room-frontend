@@ -1,0 +1,103 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../editCompany.css">
+    <title>Edit company</title>
+</head>
+  
+<form action="/company/<%= company.id %>/edit" method="POST">
+  <section class="h-100 h-custom gradient-custom-2">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-8">
+            <div class="card card-registration shadow card-registration-2" style="border-radius: 15px;">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-12">
+                    <div class="p-5">
+                      <h3 class="fw-bold mb-5" style="color: black; text-decoration: underline;">Edit company <%= company.id %></h3>
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="name" name="name" value="<%= company.name %>" class="form-control form-control-lg" required/>
+                            <label class="form-label" for="name">Name</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="description" name="description" value="<%= company.description %>" class="form-control form-control-lg" required/>
+                            <label class="form-label" for="description">Description</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="email" name="email" value="<%= company.email %>" class="form-control form-control-lg" required/>
+                            <label class="form-label" for="email">Email</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 mb-4 pb-2">
+                          <div class="form-outline">
+                            <input type="text" id="id" name="id" value="<%= company.id %>" class="form-control form-control-lg" required/>
+                            <label class="form-label" for="id">ID</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                              <img id="imgElem" height="100px" width="100px"></img>
+                              <input type="file" id="logo" class="form-control form-control-lg"/>
+                              <label class="form-label" for="logo">Logo</label>
+                              <input type="text" id="b64" name="logo" value="<%= company.logo %>" style="display: none;">
+                            </div>
+                          </div>
+                      </div>
+                        <button type="submit" class="btn btn-dark btn-lg" data-mdb-ripple-color="dark">Submit</button>
+                    </div>
+                  </div>
+              </section>
+          </form>
+          <script>
+            const baseStr64 ="<%= company.logo %>";
+            const imgElem = document.getElementById('imgElem');
+            imgElem.setAttribute('src', "data:image/jpg;base64," + baseStr64);
+
+            document.addEventListener('DOMContentLoaded', function () {
+            const logoInput = document.getElementById('logo');
+            var b64Input = document.getElementById('b64')
+
+            logoInput.addEventListener('change', function (event) {
+              const selectedFile = event.target.files[0];
+
+              if (selectedFile) {
+                convertToBase64(selectedFile, function (base64Image) {
+                  const base64WithoutHeader = removeBase64Header(base64Image);
+                  console.log('Base64 Image:', base64WithoutHeader);
+                  b64Input.value = base64WithoutHeader;
+                });
+              }
+            });
+
+            function convertToBase64(file, callback) {
+              const reader = new FileReader();
+              reader.onload = function () {
+                callback(reader.result);
+              };
+              reader.readAsDataURL(file);
+            }
+
+            function removeBase64Header(base64String) {
+              const header = 'data:image/';
+              const parts = base64String.split(',');
+
+              if (parts.length === 2 && parts[0].startsWith(header)) {
+                return parts[1];
+              }
+
+              return base64String;
+            }
+          });
+          </script>

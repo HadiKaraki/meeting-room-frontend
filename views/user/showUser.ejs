@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../showUser.css">
+    <title>user</title>
+</head>
+
+<section class="square-container">
+    <div class="info">
+        <div id="top-panel">
+            <h1 style="color: blue;">
+                <%= user.userName %>
+            </h1>
+        </div>
+        <div id="middle-panel">
+            <div id="description">
+                <h3>
+                    <%= user.firstName %> <%= user.lastName %>
+                </h3>
+            </div>
+            <div id="item-code">
+                <strong><p style="margin-right: 80px; display: inline;">ID:</p></strong>
+                <p style="display: inline; color: blue; font-size: 20px;"><%= user.id %></p>
+            </div>
+            <div id="item-code">
+                <strong><p style="margin-right: 80px; display: inline;">Company ID:</p></strong>
+                <p style="display: inline; color: blue; font-size: 20px;"><%= user.companyId %></p>
+            </div>
+            <div id="in-stock">
+                <strong><p style="margin-right: 80px; display: inline;">Email:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= user.email %></p>
+            </div>
+            <div id="nb-in-stock">
+                <strong><p style="margin-right: 80px; display: inline;">Age:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= user.age %></p>
+            </div>
+            <div id="brand">
+                <strong><p style="margin-right: 80px; display: inline;">Phone number:</p></strong>
+                <p style="display: inline; font-size: 20px;"><%= user.phoneNumber %></p>
+            </div>
+        </div>
+        <div id="bottom-panel">
+            <!-- <a href="/" style="margin-right: 10px;">View all users</a> -->
+            <% if(userRoles.includes('company_admin') || userRoles.includes('admin')) { %>
+            <!-- <a id="edit-product" href="/user/<%= user.id %>/edit" style="margin-right: 10px;">Edit</a> -->
+            <% } %>
+            <a id="edit-product" href="/user/<%= user.id %>/delete" style="color: red;">Delete</a>
+        </div>
+    </div>
+</section>

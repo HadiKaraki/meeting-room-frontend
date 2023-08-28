@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate')%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../showRoles.css">
+    <title>All companies</title>
+</head>
+
+<table class="table table-striped table-bordered table-dark" style="max-width:70%; margin: auto;">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">ID</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for(let role of roles) {%>
+      <tr>
+        <td><%= role.name %></td>
+        <th scope="row"><%= role.id %></th>
+        <th scope="row"><a href="/role/<%= role.id %>/delete" style="color: red;">delete</a></th>
+      </tr>
+    <% }%>
+    </tbody>
+  </table>
+  <style>
+    footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        opacity: 1 !important;
+    }
+  </style>
